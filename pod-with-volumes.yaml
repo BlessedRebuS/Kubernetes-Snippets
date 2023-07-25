@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv
+spec:
+  storageClassName: normal
+  capacity:
+    storage: 5Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+  hostPath:
+    path: /etc/foo
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc
+spec:
+   storageClassName: normal
+   accessModes:
+    - ReadWriteOnce
+   resources:
+     requests:
+       storage: 4Gi
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: busypod
+  name: busypod
+spec:
+  containers:
+  - image: busybox
+    name: busypod
+    resources: {}
+    command: ["/bin/sh", "-c", "sleep 3600"]
+    volumeMounts:
+    - mountPath: "/etc/foo"
+      name: myvolume
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  volumes:
+    - name: myvolume
+      persistentVolumeClaim:
+        claimName: pvc
+status: {}
