@@ -1,7 +1,9 @@
 # kubernetes-snippets
-Some useful snippets for Kubernetes
+Some useful snippets for Kubernetes. Here are listed the most useful ones.
 
-Every file can be applied with `kubectl -f <file-name>.yaml`. Here are listed the most useful templates.
+Many examples starts from templates that can also be found here **https://github.com/dgkanatsios/CKAD-exercises**.
+
+Every file can be applied with `kubectl -f <file-name>.yaml`.
 
 ---
 
