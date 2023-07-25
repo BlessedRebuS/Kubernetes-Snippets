@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  creationTimestamp: null
+  name: vibrant-tokyo
+  labels:
+    id: vibrant-tokyo
+spec:
+  jobTemplate:
+    metadata:
+      creationTimestamp: null
+      name: vibrant-tokyo
+    spec:
+      template:
+        metadata:
+          creationTimestamp: null
+        spec:
+          containers:
+          - command:
+            - /bin/sh
+            - -c
+            - "date; echo Welcome to vibrant Tokyo!"
+            image: busybox
+            imagePullPolicy: IfNotPresent
+            name: vibrant-tokyo
+            resources: {}
+          restartPolicy: OnFailure
+  schedule: '* * * * *'
+status: {}

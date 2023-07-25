@@ -30,8 +30,32 @@ kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-    run: busypod
-  name: busypod
+    run: busypod1
+  name: busypod1
+spec:
+  containers:
+  - image: busybox
+    name: busypod1
+    resources: {}
+    command: ["/bin/sh", "-c", "sleep 3600"]
+    volumeMounts:
+    - mountPath: "/etc/foo"
+      name: myvolume
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  volumes:
+    - name: myvolume
+      persistentVolumeClaim:
+        claimName: pvc
+status: {}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: busypod2
+  name: busypod2
 spec:
   containers:
   - image: busybox
