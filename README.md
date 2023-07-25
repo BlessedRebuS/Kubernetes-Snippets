@@ -1,7 +1,7 @@
 # kubernetes-snippets
 Some useful snippets for Kubernetes
 
-Every file can be applied with `kubectl -f <file-name>.yaml`
+Every file can be applied with `kubectl -f <file-name>.yaml`. Here are listed the most useful templates.
 
 ---
 
@@ -32,4 +32,6 @@ An example of a Liveness Probe. A Liveness Probe tells to the Kubernetes Node if
 ## [pod-limitrange.yaml](https://github.com/BlessedRebuS/kubernetes-snippets/blob/master/pod-limitrange.yaml)
 A limit range configuration that avoids the deploy of resources with more than 700Mi of memory. Increasing the Pod request will cause the apply to fail.
 
+## [taint-pod.yaml](https://github.com/BlessedRebuS/kubernetes-snippets/blob/master/taint-pod.yaml)
+Example of taint in Kubernetes. Each Pod with **tier=frontend** label will not be scheduled.
 
