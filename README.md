@@ -37,3 +37,5 @@ A limit range configuration that avoids the deploy of resources with more than 7
 ## [taint-pod.yaml](https://github.com/BlessedRebuS/kubernetes-snippets/blob/master/taint-pod.yaml)
 Example of taint in Kubernetes. Each Pod with **tier=frontend** label will not be scheduled.
 
+## [custom-resource-definition.yaml](https://github.com/BlessedRebuS/kubernetes-snippets/blob/master/custom-resource-definition.yaml)
+Custom Resource Definition (CRD) that implements the object "Painter" in Kubernetes. In this way new classes can be defined, added and used with other resources. With the command `kubectl get pt` or `kubectl get painters` the list of artist will be shown.
